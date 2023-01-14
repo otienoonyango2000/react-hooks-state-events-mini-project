@@ -4,7 +4,7 @@ function NewTaskForm({categories, addTask}) {
   function handleSubmit(e) {
     e.preventDefault();
     //
-    // alert(e.target.text+""+e.target.category.value)
+    // alert(e.target.text+"\n"+e.target.category.value)
     const newTask = {
       text: e.target.text.value,
       category: e.target.category.value

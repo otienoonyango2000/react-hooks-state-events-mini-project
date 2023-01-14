@@ -7,14 +7,29 @@ import { CATEGORIES, TASKS } from "../data";
 
 
 function App() {
-  const taskDelete = TASKS.map(()=>{})
+  const idArr = TASKS.map((task, index)=>{
+    return {...task, id: index}
+  })
+
   const [category, setCategory] = useState("All")
-  const [tasks, setTask] = useState(TASKS);
+  const [tasks, setTask] = useState(idArr);
 
   // setTasks{[...tasks,newTask]}
   
   function addTask(newTask){
     setTask([newTask, ...tasks]);
+  }
+
+  function removeTask(id){
+    
+    let newTask=tasks.filter(task=>{
+      if(task.id===id){
+        return false
+      } else{
+        return true
+      }
+    })
+    setTask(newTask)
   }
 
   const taskToDisplay = tasks.filter((task)=>{
@@ -32,7 +47,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter setCategory={setCategory} categories={CATEGORIES}/>
       <NewTaskForm addTask={addTask} categories={CATEGORIES}/>
-      <TaskList tasks = {taskToDisplay}/>
+      <TaskList removeTask={removeTask} tasks = {taskToDisplay}/>
 
     </div>
   );

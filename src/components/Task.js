@@ -1,10 +1,10 @@
 import React from "react";
 
 
-function Task({text, category}) {
+function Task({text, category, removeTask, taskId}) {
 
   function handleDelete(event){
-    
+    removeTask(taskId)
   }
 
   return (

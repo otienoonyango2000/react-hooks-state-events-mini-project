@@ -3,7 +3,7 @@ import Task from "./Task";
 import { useState } from "react";
 
 
-function TaskList({tasks}) {
+function TaskList({tasks, removeTask}) {
   
   
 
@@ -11,7 +11,7 @@ function TaskList({tasks}) {
     <div className="tasks">
       {
         tasks.map((task, index)=>{
-          return <Task key={index}text={task.text} category={task.category}/>
+          return <Task key={index} removeTask={removeTask} taskId={task.id} text={task.text} category={task.category}/>
         })
       }
 
